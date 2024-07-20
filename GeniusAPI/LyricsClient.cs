@@ -24,21 +24,37 @@ public class LyricsClient
     public LyricsClient(
         string accessToken)
     {
-        client.DefaultRequestHeaders.Authorization = new("Bearer", accessToken);
+        this.AccessToken = accessToken;
     }
 
     /// <summary>
     /// Creates a new LyricsClient
     /// </summary>
-    /// <param name="accessToken">The access token for the Genius API. Get one for free here: https://genius.com/api-clients</param>
+    /// <param name="accessToken">The access token for the Genius API. Get one for free here: https://genius.com/api-clients.</param>
     /// <param name="logger">The logger used to log.</param>
     public LyricsClient(
         string accessToken,
         ILogger<LyricsClient> logger)
     {
+        this.AccessToken = accessToken;
         this.logger = logger;
+    }
 
-        client.DefaultRequestHeaders.Authorization = new("Bearer", accessToken);
+
+    string accessToken = default!;
+
+    /// <summary>
+    /// The access token for the Genius API.
+    /// Get one for free here: https://genius.com/api-clients.
+    /// </summary>
+    public string AccessToken
+    {
+        get => accessToken;
+        set
+        {
+            accessToken = value;
+            client.DefaultRequestHeaders.Authorization = new("Bearer", value);
+        }
     }
 
 
