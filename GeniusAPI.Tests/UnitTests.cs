@@ -6,7 +6,7 @@ using System.Text.Json;
 
 namespace GeniusAPI.Tests;
 
-internal class Search
+internal class UnitTests
 {
     ILogger<LyricsClient> logger;
     LyricsClient client;
