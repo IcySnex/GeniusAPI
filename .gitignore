@@ -1,0 +1,13 @@
+.vs/
+packages/
+
+*.suo
+*.user
+_ReSharper.*
+
+
+GeniusAPI/bin/
+GeniusAPI/obj/
+
+GeniusAPI.Tests/bin/
+GeniusAPI.Tests/obj/
