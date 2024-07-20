@@ -8,7 +8,7 @@ namespace GeniusAPI.Tests;
 
 internal class UnitTests
 {
-    ILogger<LyricsClient> logger;
+    ILogger logger;
     LyricsClient client;
 
     [SetUp]
@@ -19,7 +19,7 @@ internal class UnitTests
             builder.AddConsole();
         });
 
-        logger = factory.CreateLogger<LyricsClient>();
+        logger = factory.CreateLogger<UnitTests>();
         client = new(TestData.AccessToken, logger);
     }
 

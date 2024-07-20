@@ -13,7 +13,7 @@ namespace GeniusAPI;
 /// </summary>
 public class LyricsClient
 {
-    readonly ILogger<LyricsClient>? logger = null;
+    readonly ILogger? logger = null;
 
     readonly HttpClient client = new();
 
@@ -34,7 +34,7 @@ public class LyricsClient
     /// <param name="logger">The logger used to log.</param>
     public LyricsClient(
         string accessToken,
-        ILogger<LyricsClient> logger)
+        ILogger logger)
     {
         this.AccessToken = accessToken;
         this.logger = logger;
