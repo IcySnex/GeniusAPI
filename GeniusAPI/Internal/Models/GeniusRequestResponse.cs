@@ -2,11 +2,11 @@
 
 namespace GeniusAPI.Internal.Models;
 
-internal class LyricsRequestResponse
+internal class GeniusRequestResponse
 {
     [JsonPropertyName("type")]
     public string Type { get; set; } = default!;
 
     [JsonPropertyName("hits")]
-    public LyricsHit[] Hits { get; set; } = [];
+    public GeniusHit[] Hits { get; set; } = [];
 }

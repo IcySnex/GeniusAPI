@@ -3,11 +3,11 @@ using System.Text.Json.Serialization;
 
 namespace GeniusAPI.Internal.Models;
 
-internal class LyricsHit
+internal class GeniusHit
 {
     [JsonPropertyName("type")]
     public string Type { get; set; } = default!;
 
     [JsonPropertyName("result")]
-    public LyricsTrack Track { get; set; } = default!;
+    public GeniusTrack Track { get; set; } = default!;
 }

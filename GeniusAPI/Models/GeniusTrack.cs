@@ -6,7 +6,7 @@ namespace GeniusAPI.Models;
 /// <summary>
 /// Represents a track on Genius.
 /// </summary>
-public class LyricsTrack
+public class GeniusTrack
 {
     /// <summary>
     /// The count of annotations of the track.
@@ -103,7 +103,7 @@ public class LyricsTrack
     /// The stats of the track.
     /// </summary>
     [JsonPropertyName("stats")]
-    public LyricTrackStats Stats { get; set; } = default!;
+    public GeniusTrackStats Stats { get; set; } = default!;
 
     /// <summary>
     /// The title of the track.
@@ -127,11 +127,11 @@ public class LyricsTrack
     /// The featured artists of the track.
     /// </summary>
     [JsonPropertyName("featured_artists")]
-    public LyricsArtist[] FeaturedArtists { get; set; } = [];
+    public GeniusArtist[] FeaturedArtists { get; set; } = [];
 
     /// <summary>
     /// The primary artist of the track.
     /// </summary>
     [JsonPropertyName("primary_artist")]
-    public LyricsArtist PrimaryArtist { get; set; } = default!;
+    public GeniusArtist PrimaryArtist { get; set; } = default!;
 }

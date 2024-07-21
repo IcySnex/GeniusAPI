@@ -2,7 +2,7 @@
 
 namespace GeniusAPI.Internal.Models;
 
-internal class LyricsRequestMeta
+internal class GeniusRequestMetaData
 {
     [JsonPropertyName("status")]
     public int StatusCode { get; set; } = default!;

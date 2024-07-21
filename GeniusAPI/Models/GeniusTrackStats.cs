@@ -5,7 +5,7 @@ namespace GeniusAPI.Models;
 /// <summary>
 /// Represents the stats of a Genius track.
 /// </summary>
-public class LyricTrackStats
+public class GeniusTrackStats
 {
     /// <summary>
     /// The count of unreviewed annotations of the track.
