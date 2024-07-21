@@ -1,5 +1,5 @@
 # GeniusAPI
-This Genius API wrapper allows you to easily search for tracks/genres on Genius. It also provides lyrics fetching using web scraping.
+This Genius API wrapper allows you to easily search for tracks on Genius. It also provides lyrics/genres fetching using web scraping.
 
 ---
 
