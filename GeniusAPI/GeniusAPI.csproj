@@ -5,14 +5,14 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 
-		<Version>1.0.2</Version>
-		<AssemblyVersion>1.0.2</AssemblyVersion>
-		<FileVersion>1.0.2</FileVersion>
+		<Version>1.1.0</Version>
+		<AssemblyVersion>1.1.0</AssemblyVersion>
+		<FileVersion>1.1.0</FileVersion>
 
 		<Title>Genius API</Title>
 		<Authors>IcySnex</Authors>
 		<Company />
-		<Description>Allows to search and fetch track lyrics on Genius</Description>
+		<Description>Allows to search and fetch track lyrics/genres on Genius</Description>
 		<PackageProjectUrl>https://github.com/IcySnex/GeniusAPI</PackageProjectUrl>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
@@ -23,7 +23,9 @@
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<PackageReleaseNotes>- Exchanged logger with generic type to normal logger</PackageReleaseNotes>
+		<PackageReleaseNotes>- Inroduced ability to fetch genres
+- Introduced ability to get track info
+- Renamed models and client</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<ItemGroup>

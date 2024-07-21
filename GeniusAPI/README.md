@@ -1,5 +1,5 @@
 # GeniusAPI
-This Genius API wrapper allows you to easily search for tracks on Genius. It also provides lyrics fetching using web scraping.
+This Genius API wrapper allows you to easily search for tracks/genres on Genius. It also provides lyrics fetching using web scraping.
 
 ---
 
@@ -9,8 +9,8 @@ Search for tracks on Genius:
 using GeniusAPI;
 using GeniusAPI.Models;
 
-LyricsClient client = new("<GENIUS ACCESS TOKEN>");
-IEnumerable<LyricsTrack> tracks = await client.SearchTracksAsync("<SEARCH QUERRY>");
+GeniusClient client = new("<GENIUS ACCESS TOKEN>");
+IEnumerable<GeniusTrack> tracks = await client.SearchTracksAsync("<SEARCH QUERRY>");
 ```
 
 Fetch lyrics of a track:
@@ -18,8 +18,30 @@ Fetch lyrics of a track:
 using GeniusAPI;
 using GeniusAPI.Models;
 
-LyricsClient client = new("<YOUR GENIUS ACCESS TOKEN>");
+GeniusClient client = new("<YOUR GENIUS ACCESS TOKEN>");
 string lyrics = await client.FetchLyricsAsync("<GENIUS TRACK URL>");
+```
+
+Fetch genres of a track:
+```cs
+using GeniusAPI;
+using GeniusAPI.Models;
+
+GeniusClient client = new("<YOUR GENIUS ACCESS TOKEN>");
+IEnumerable<string> genres = await client.FetchGenresAsync("<GENIUS TRACK URL>");
+```
+
+Get track info (search for track & additionally fetch the lyrics/genres):
+```cs
+using GeniusAPI;
+using GeniusAPI.Models;
+
+GeniusClient client = new("<YOUR GENIUS ACCESS TOKEN>");
+GeniusTrackInfo trackInfo = await client.GetTrackInfoAsync("<TRACK TITLE>", "<TRACK ARTIST>");
+
+GeniusTrack track = trackInfo.Track;
+string lyrics = trackInfo.Lyrics;
+IEnumerable<string> genres = trackInfo.Genres;
 ```
 
 ---
