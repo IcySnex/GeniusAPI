@@ -9,7 +9,7 @@ namespace GeniusAPI.Tests;
 internal class UnitTests
 {
     ILogger logger;
-    LyricsClient client;
+    GeniusClient client;
 
     [SetUp]
     public void Setup()
@@ -27,7 +27,7 @@ internal class UnitTests
     [Test]
     public void search_for_tracks()
     {
-        IEnumerable<LyricsTrack>? tracks = null;
+        IEnumerable<GeniusTrack>? tracks = null;
 
         Assert.DoesNotThrowAsync(async () =>
         {
@@ -42,18 +42,56 @@ internal class UnitTests
 
 
     [Test]
-    public void fetch_track_lyrics()
+    public void fetch_lyrics()
     {
-        string? trackLyrics = null;
+        string? lyrics = null;
 
         Assert.DoesNotThrowAsync(async () =>
         {
-            trackLyrics = await client.FetchLyricsAsync(TestData.Url);
+            lyrics = await client.FetchLyricsAsync(TestData.Url);
         });
-        Assert.That(trackLyrics, Is.Not.Null);
-        Assert.That(trackLyrics, Is.Not.Empty);
+        Assert.That(lyrics, Is.Not.Null);
+        Assert.That(lyrics, Is.Not.Empty);
 
         // Output
-        logger.LogInformation("\nTrack Lyrics: {trackLyrics} ", trackLyrics);
+        logger.LogInformation("\nLyrics: {lyrics} ", lyrics);
+    }
+
+    [Test]
+    public void fetch_genres()
+    {
+        IEnumerable<string>? genres = null;
+
+        Assert.DoesNotThrowAsync(async () =>
+        {
+            genres = await client.FetchGenresAsync(TestData.Url);
+        });
+        Assert.That(genres, Is.Not.Null);
+        Assert.That(genres, Is.Not.Empty);
+
+        // Output
+        logger.LogInformation("\nGenres: {genres} ", genres);
+    }
+
+
+    [Test]
+    public void get_track_info()
+    {
+        GeniusTrackInfo? trackInfo = null;
+
+        Assert.DoesNotThrowAsync(async () =>
+        {
+            trackInfo = await client.GetTrackInfoAsync(TestData.Title, TestData.Artist);
+        });
+        Assert.That(trackInfo, Is.Not.Null);
+        Assert.Multiple(() =>
+        {
+            Assert.That(trackInfo.Track, Is.Not.Null);
+            Assert.That(trackInfo.Lyrics, Is.Not.Empty);
+            Assert.That(trackInfo.Genres, Is.Not.Empty);
+        });
+
+        // Output
+        logger.LogInformation("\nTrack Info: {trackInfo} ", JsonSerializer.Serialize(trackInfo, TestData.SerializerOptions));
     }
 }
