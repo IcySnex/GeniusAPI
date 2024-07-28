@@ -87,12 +87,12 @@ public class GeniusClient
         if (result is null)
         {
             logger?.LogError("[LyricsClient-SearchTracksAsync] Failed to search for tracks on Genius: Parsed search result is null");
-            throw new NullReferenceException("Failed to search for tracks on Genius: Parsed search result is null");
+            return [];
         }
         if (result.MetaData.StatusCode != 200)
         {
             logger?.LogError("[LyricsClient-SearchTracksAsync] Failed to search for lyrics: {statusCode}, {message}", result.MetaData.StatusCode, result.MetaData.Message);
-            throw new HttpRequestException($"Lyrics request did not return successful status code: {result.MetaData.StatusCode}.", new(result.MetaData.Message ?? "Unknown message."));
+            return [];
         }
 
         return result.Response.Hits
@@ -120,8 +120,8 @@ public class GeniusClient
     /// </summary>
     /// <param name="trackUrl">The url of the track to fetch the lyrics for.</param>
     /// <param name="cancellationToken">The token to cancel this action.</param>
-    /// <returns>A string representing the lyrics.</returns>
-    public async Task<string> FetchLyricsAsync(
+    /// <returns>A string representing the lyrics. May be null if lyrics couldn't be found.</returns>
+    public async Task<string?> FetchLyricsAsync(
         string trackUrl,
         CancellationToken cancellationToken = default)
     {
@@ -134,8 +134,8 @@ public class GeniusClient
     /// </summary>
     /// <param name="trackUrl">The url of the track to fetch the genres for.</param>
     /// <param name="cancellationToken">The token to cancel this action.</param>
-    /// <returns>An enumerable containing all genres.</returns>
-    public async Task<IEnumerable<string>> FetchGenresAsync(
+    /// <returns>An enumerable containing all genres. May be null if genres couldn't be found.</returns>
+    public async Task<IEnumerable<string>?> FetchGenresAsync(
         string trackUrl,
         CancellationToken cancellationToken = default)
     {
@@ -150,9 +150,8 @@ public class GeniusClient
     /// <param name="title">The title of the track to search for.</param>
     /// <param name="artist">The primary artist of the track to search for.</param>
     /// <param name="cancellationToken">The token to cancel this action.</param>
-    /// <returns>A new LyricsTrackInfo</returns>
-    /// <exception cref="NullReferenceException"></exception>
-    public async Task<GeniusTrackInfo> GetTrackInfoAsync(
+    /// <returns>A new LyricsTrackInfo. May be null if track info couldn't be found.</returns>
+    public async Task<GeniusTrackInfo?> GetTrackInfoAsync(
         string title,
         string artist,
         CancellationToken cancellationToken = default)
@@ -163,12 +162,12 @@ public class GeniusClient
         if (track is null)
         {
             logger?.LogError("[LyricsClient-GetTrackInfoAsync] Failed to get track info: search results don't contain required track.");
-            throw new NullReferenceException("Failed to get track info: search results don't contain required track.");
+            return null;
         }
 
         HtmlNode documentNode = await GetDocumentNodeAsync(track.Url, cancellationToken);
-        string lyrics = infoParser.GetLyrics(documentNode);
-        IEnumerable<string> genres = infoParser.GetGenres(documentNode);
+        string? lyrics = infoParser.GetLyrics(documentNode);
+        IEnumerable<string>? genres = infoParser.GetGenres(documentNode);
         
         return new(track, lyrics, genres);
     }

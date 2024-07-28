@@ -19,7 +19,7 @@ using GeniusAPI;
 using GeniusAPI.Models;
 
 GeniusClient client = new("<YOUR GENIUS ACCESS TOKEN>");
-string lyrics = await client.FetchLyricsAsync("<GENIUS TRACK URL>");
+string? lyrics = await client.FetchLyricsAsync("<GENIUS TRACK URL>");
 ```
 
 Fetch genres of a track:
@@ -28,7 +28,7 @@ using GeniusAPI;
 using GeniusAPI.Models;
 
 GeniusClient client = new("<YOUR GENIUS ACCESS TOKEN>");
-IEnumerable<string> genres = await client.FetchGenresAsync("<GENIUS TRACK URL>");
+IEnumerable<string>? genres = await client.FetchGenresAsync("<GENIUS TRACK URL>");
 ```
 
 Get track info (search for track & additionally fetch the lyrics/genres):
@@ -37,11 +37,11 @@ using GeniusAPI;
 using GeniusAPI.Models;
 
 GeniusClient client = new("<YOUR GENIUS ACCESS TOKEN>");
-GeniusTrackInfo trackInfo = await client.GetTrackInfoAsync("<TRACK TITLE>", "<TRACK ARTIST>");
+GeniusTrackInfo? trackInfo = await client.GetTrackInfoAsync("<TRACK TITLE>", "<TRACK ARTIST>");
 
 GeniusTrack track = trackInfo.Track;
-string lyrics = trackInfo.Lyrics;
-IEnumerable<string> genres = trackInfo.Genres;
+string lyrics? = trackInfo?.Lyrics;
+IEnumerable<string>? genres = trackInfo?.Genres;
 ```
 
 ---

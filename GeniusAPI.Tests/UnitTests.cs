@@ -87,7 +87,9 @@ internal class UnitTests
         Assert.Multiple(() =>
         {
             Assert.That(trackInfo.Track, Is.Not.Null);
+            Assert.That(trackInfo.Lyrics, Is.Not.Null);
             Assert.That(trackInfo.Lyrics, Is.Not.Empty);
+            Assert.That(trackInfo.Genres, Is.Not.Null);
             Assert.That(trackInfo.Genres, Is.Not.Empty);
         });
 

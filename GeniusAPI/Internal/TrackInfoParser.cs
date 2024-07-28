@@ -42,7 +42,7 @@ internal class TrackInfoParser
     }
 
 
-    public string GetLyrics(
+    public string? GetLyrics(
         HtmlNode documentNode)
     {
         logger?.LogInformation("[TrackInfoParser-GetLyrics] Parsing track lyrics...");
@@ -50,7 +50,7 @@ internal class TrackInfoParser
         if (nodes is null || nodes.Count == 0)
         {
             logger?.LogError("[TrackInfoParser-GetLyrics] Failed to parse track lyrics: Parsed HTML nodes is null or empty.");
-            throw new NullReferenceException("Failed to parse track lyrics: Parsed HTML nodes is null or empty.");
+            return null;
         }
 
         StringBuilder builder = new();
@@ -63,7 +63,7 @@ internal class TrackInfoParser
         return WebUtility.HtmlDecode(builder.ToString().TrimEnd());
     }
 
-    public IEnumerable<string> GetGenres(
+    public IEnumerable<string>? GetGenres(
         HtmlNode documentNode)
     {
         logger?.LogInformation("[TrackInfoParser-GetLyrics] Parsing track genres...");
@@ -71,7 +71,7 @@ internal class TrackInfoParser
         if (nodes is null)
         {
             logger?.LogError("[LyricsClient-GetGenres] Failed to parse track genres: Parsed HTML nodes is null.");
-            throw new NullReferenceException("Failed to parse track genres: Parsed HTML nodes is null.");
+            return null;
         }
 
         return nodes.Select(node => node.InnerText);

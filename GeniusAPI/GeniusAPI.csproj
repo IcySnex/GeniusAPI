@@ -5,9 +5,9 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 
-		<Version>1.1.0</Version>
-		<AssemblyVersion>1.1.0</AssemblyVersion>
-		<FileVersion>1.1.0</FileVersion>
+		<Version>1.1.1</Version>
+		<AssemblyVersion>1.1.1</AssemblyVersion>
+		<FileVersion>1.1.1</FileVersion>
 
 		<Title>Genius API</Title>
 		<Authors>IcySnex</Authors>
@@ -23,9 +23,7 @@
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<PackageReleaseNotes>- Inroduced ability to fetch genres
-- Introduced ability to get track info
-- Renamed models and client</PackageReleaseNotes>
+		<PackageReleaseNotes>- Replaced all throwed excpetions with returning null</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<ItemGroup>

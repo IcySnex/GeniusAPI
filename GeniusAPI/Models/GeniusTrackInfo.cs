@@ -7,12 +7,12 @@
 /// Creates a new GeniusTrackInfo.
 /// </remarks>
 /// <param name="track">The track the info was fetched from.</param>
-/// <param name="lyrics">The lyrics of the track.</param>
-/// <param name="genres">The genres of the track.</param>
+/// <param name="lyrics">The lyrics of the track. May be null if lyrics couldn't be found.</param>
+/// <param name="genres">The genres of the track. May be null if genres couldn't be found.</param>
 public class GeniusTrackInfo(
     GeniusTrack track,
-    string lyrics,
-    IEnumerable<string> genres)
+    string? lyrics,
+    IEnumerable<string>? genres)
 {
     /// <summary>
     /// The track the info was fetched from.
@@ -21,11 +21,15 @@ public class GeniusTrackInfo(
 
     /// <summary>
     /// The lyrics of the track.
+    /// <br/>
+    /// May be null if lyrics couldn't be found.
     /// </summary>
-    public string Lyrics { get; } = lyrics;
+    public string? Lyrics { get; } = lyrics;
 
     /// <summary>
     /// The genres of the track.
+    /// <br/>
+    /// May be null if genres couldn't be found.
     /// </summary>
-    public IEnumerable<string> Genres { get; } = genres;
+    public IEnumerable<string>? Genres { get; } = genres;
 }
