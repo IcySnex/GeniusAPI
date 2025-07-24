@@ -86,12 +86,12 @@ public class GeniusClient
         GeniusRequestResult? result = JsonSerializer.Deserialize<GeniusRequestResult>(body);
         if (result is null)
         {
-            logger?.LogError(ex, "[LyricsClient-SearchTracksAsync] Failed to search for tracks on Genius: Parsed search result is null");
+            logger?.LogWarning("[LyricsClient-SearchTracksAsync] Failed to search for tracks on Genius: Parsed search result is null");
             return [];
         }
         if (result.MetaData.StatusCode != 200)
         {
-            logger?.LogError(ex, "[LyricsClient-SearchTracksAsync] Failed to search for lyrics: {statusCode}, {message}", result.MetaData.StatusCode, result.MetaData.Message);
+            logger?.LogWarning("[LyricsClient-SearchTracksAsync] Failed to search for lyrics: {statusCode}, {message}", result.MetaData.StatusCode, result.MetaData.Message);
             return [];
         }
 
@@ -161,7 +161,7 @@ public class GeniusClient
         GeniusTrack? track = searchResults.FirstOrDefault(searchResult => searchResult.FullTitle.Contains(title, StringComparison.InvariantCultureIgnoreCase) && searchResult.ArtistNames.Contains(artist, StringComparison.InvariantCultureIgnoreCase));
         if (track is null)
         {
-            logger?.LogError(ex, "[LyricsClient-GetTrackInfoAsync] Failed to get track info: search results don't contain required track.");
+            logger?.LogWarning("[LyricsClient-GetTrackInfoAsync] Failed to get track info: search results don't contain required track.");
             return null;
         }
 
