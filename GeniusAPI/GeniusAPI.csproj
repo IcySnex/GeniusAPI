@@ -5,9 +5,9 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 
-		<Version>1.1.1</Version>
-		<AssemblyVersion>1.1.1</AssemblyVersion>
-		<FileVersion>1.1.1</FileVersion>
+		<Version>1.1.2</Version>
+		<AssemblyVersion>1.1.2</AssemblyVersion>
+		<FileVersion>1.1.2</FileVersion>
 
 		<Title>Genius API</Title>
 		<Authors>IcySnex</Authors>
@@ -23,7 +23,12 @@
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<PackageReleaseNotes>- Replaced all throwed excpetions with returning null</PackageReleaseNotes>
+		<PackageReleaseNotes>
+			- Fixed header from getting parsing into lyrics
+			- Fixed typo in GeniusTrack model: "ArtworklUrl" (#1)
+			- Changed error logs to warnings
+			- Updated packages
+		</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -42,7 +47,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="HtmlAgilityPack" Version="1.11.61" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
+		<PackageReference Include="HtmlAgilityPack" Version="1.12.2" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.3" />
 	</ItemGroup>
 </Project>
