@@ -12,6 +12,10 @@ internal class TrackInfoParser
         StringBuilder builder)
     {
         foreach (HtmlNode childNode in node.ChildNodes)
+        {
+            if (childNode.GetClasses().Any(c => c.StartsWith("LyricsHeader", StringComparison.InvariantCultureIgnoreCase)))
+                continue;
+
             switch (childNode.NodeType)
             {
                 case HtmlNodeType.Text:
@@ -24,6 +28,7 @@ internal class TrackInfoParser
                         GetHtmlText(childNode, builder);
                     break;
             }
+        }
     }
 
 
