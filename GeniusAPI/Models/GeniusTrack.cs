@@ -97,7 +97,7 @@ public class GeniusTrack
     /// The url of the artwork of the track.
     /// </summary>
     [JsonPropertyName("song_art_image_url")]
-    public string ArtworklUrl { get; set; } = default!;
+    public string ArtworkUrl { get; set; } = default!;
 
     /// <summary>
     /// The stats of the track.
